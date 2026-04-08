@@ -2,7 +2,7 @@
 
 > **欄位標記說明**：標題前有 `*` 為**必填**段落（即使結論是「無」也要明確寫出）；標題後標 `（選填）` 為視情況補充。
 
-## * 狀態：`approved`
+## * 狀態：`in-progress`
 
 ## * 版本歷史
 
@@ -11,6 +11,7 @@
 | v1.0 | 2026-04-08 | 初始版本 | /req-translate |
 | v1.1 | 2026-04-08 | 解決 v1.0 的 6 個開放問題：商業模式定為純買賣（二手書市集）、目標族群擴展至所有台灣讀者、物流限定超商店到店、全台同步上線、提案者為原 intake 提交者、「好用」具體化為 4 項可量測指標 | /req-iterate |
 | v1.1 | 2026-04-08 | 6 個衝突全部解決（CONFLICT-001 ~ 006），spec 狀態 draft → in-review → approved | /req-resolve-conflict + /req-review |
+| v1.1 | 2026-04-08 | CONFLICT-006 法律驗證通過；技術計畫產出並由 Spec 擁有者核准；spec 狀態 approved → in-progress | /req-plan |
 
 ## * 來源追溯
 

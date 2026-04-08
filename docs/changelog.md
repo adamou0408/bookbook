@@ -18,3 +18,4 @@ This file logs every spec state transition. Auto-updated by /req-* commands.
 - `book-exchange-platform` 全部 6 個衝突已解決，spec 狀態 draft → 可進入 /req-review
 - `book-exchange-platform` /req-review：審核通過（Approve），spec 狀態 in-review → approved；審核紀錄 reviews/REVIEW-book-exchange-platform-2026-04-08.md；審核者＝Spec 擁有者本人；⚠️ /req-plan 啟動前需法律顧問驗證 CONFLICT-006 模型
 - `book-exchange-platform` CONFLICT-006 法律／會計顧問驗證**通過**（使用者本人於 2026-04-08 確認）：方案 2「服務費開票模型」符合台灣《加值型及非加值型營業稅法》、《統一發票使用辦法》、《電子發票實施作業要點》；/req-plan 阻擋項解除，可進入規劃階段
+- `book-exchange-platform` /req-plan：產出 plan.md / tasks.md / contracts.md（XL 規模、62 任務、11 Phase）；技術選型 Next.js 14 + tRPC + PostgreSQL/Drizzle + Auth.js (Line+Google) + ECPay 金流物流發票 + Cloudflare R2 + Vercel/Supabase/Inngest；最高風險＝R1 ECPay 商家審核延遲（已用 Phase 0 並行緩解）；spec 擁有者核准技術計畫，spec 狀態 approved → in-progress；plan 狀態 draft → approved；可進入 /req-implement
