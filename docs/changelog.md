@@ -16,3 +16,4 @@ This file logs every spec state transition. Auto-updated by /req-* commands.
 - `book-exchange-platform` /req-resolve-conflict CONFLICT-005：採用方案 3（預設 7 天 + 取貨 24h 後可提早結案 + 信用分數預留），理由「守住消保法底線」
 - `book-exchange-platform` /req-resolve-conflict CONFLICT-006：採用方案 2（服務費開票模型），理由「平台身分清晰」。⚠️ 必須在 /req-plan 前由法律／會計顧問驗證符合台灣稅法；若否決需回頭重新決策
 - `book-exchange-platform` 全部 6 個衝突已解決，spec 狀態 draft → 可進入 /req-review
+- `book-exchange-platform` /req-review：審核通過（Approve），spec 狀態 in-review → approved；審核紀錄 reviews/REVIEW-book-exchange-platform-2026-04-08.md；審核者＝Spec 擁有者本人；⚠️ /req-plan 啟動前需法律顧問驗證 CONFLICT-006 模型
