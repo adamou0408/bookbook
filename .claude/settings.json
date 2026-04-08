@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(.req-framework/**)",
+      "Write(.req-framework/**)",
+      "Edit(.git/**)",
+      "Write(.git/**)"
+    ],
+    "allow": [
+      "Read(**)",
+      "Edit(./intake/**)",
+      "Edit(./specs/**)",
+      "Edit(./personas/**)",
+      "Edit(./conflicts/**)",
+      "Edit(./reviews/**)",
+      "Edit(./docs/**)",
+      "Edit(./src/**)",
+      "Edit(./tests/**)",
+      "Write(./intake/**)",
+      "Write(./specs/**)",
+      "Write(./personas/**)",
+      "Write(./conflicts/**)",
+      "Write(./reviews/**)",
+      "Write(./docs/**)",
+      "Write(./src/**)",
+      "Write(./tests/**)"
+    ]
+  }
+}

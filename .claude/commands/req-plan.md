@@ -1,0 +1,57 @@
+<!-- AUTO-GENERATED FROM .req-framework/framework/commands/plan.md — DO NOT EDIT -->
+<!-- req framework version: 2.3.0 -->
+<!-- regenerate via: bash .req-framework/framework/scripts/req-sync-commands.sh -->
+
+# /plan - Generate Technical Plan
+
+## Description
+Generate a technical implementation plan from an approved spec, informed by the research report.
+
+## Prerequisites
+- The corresponding `spec.md` status **must** be `approved`.
+- All conflicts in the spec **must** be `resolved`.
+- `research.md` **should** exist (created during `/research` phase).
+
+## Usage
+```
+/plan [spec directory path]
+```
+
+## Behavior
+1. Verify prerequisites. Abort with a clear message if not met.
+2. **Check spec dependencies**: verify all specs listed in "前置需求" have status `approved` or later. If not, warn user and wait for confirmation.
+3. Read the `spec.md`, `research.md`, and any resolved conflict records.
+4. Read CONSTITUTION for architectural constraints, **preferring the project-specific overlay**:
+   - If `./CONSTITUTION.md` exists (produced by `/req-onboard deep`), read that — it contains project-specific stack, naming, and CI constraints layered on top of the framework version.
+   - Otherwise, fall back to `.req-framework/framework/CONSTITUTION.md`.
+5. Generate `plan.md` in the spec directory, including:
+   - **Work estimate** (S/M/L/XL complexity, estimated tasks, estimated timeline)
+   - **Technology choices** with justification
+   - **Architecture design** with component breakdown
+   - **Integration points** with existing system
+   - **Risk assessment** and mitigation strategies
+   - **Data model changes** with migration strategy and rollback plan
+   - **Security considerations** based on spec security requirements
+   - **API contracts** reference (generate `contracts.md` if API changes are needed)
+   - **Estimated complexity** per component
+6. Generate `tasks.md` in the spec directory:
+   - Break the plan into small, executable tasks
+   - Each task must reference the User Story it implements
+   - Tasks should be ordered by dependency
+   - Mark parallelizable tasks with `[P-group-X]` notation
+   - Mark dependent tasks with `[depends: N]` notation
+   - Each task must include a **test strategy** (unit / integration / e2e)
+   - Each task should be independently testable
+7. If the spec involves API changes, generate `contracts.md` in the spec directory.
+8. Present the plan summary to the user.
+9. **Trigger Plan Mode approval**: after `plan.md` and `tasks.md` are written, **MUST** call the `ExitPlanMode` tool. This surfaces the native Claude Code approval popup so the human can accept or reject the technical plan. Do **NOT** proceed to `/req-implement` in the same turn — wait for the human to accept the plan via the popup.
+10. Once the human accepts the plan via ExitPlanMode, update `spec.md` status from `approved` to `in-progress` and log the transition in `./docs/changelog.md`. Only after this transition is `/req-implement` allowed to run.
+
+## Constraints
+- Plan must respect all principles in `.req-framework/framework/CONSTITUTION.md`.
+- Every task must map to at least one User Story.
+- Tasks should be small enough for a single implementation cycle.
+- Do not introduce technologies or patterns not justified by the requirements.
+- If data model changes are irreversible, flag this explicitly and note it requires extra human approval during `/deploy`.
+- **MUST NOT** auto-trigger `/req-implement` after `/req-plan`. The ExitPlanMode handshake is the gate — `/req-implement` only runs after the spec status transitions to `in-progress`.
+- **MUST NOT** transition the spec to `in-progress` without the human first accepting the plan via ExitPlanMode.
